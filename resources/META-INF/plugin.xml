@@ -1,0 +1,38 @@
+<idea-plugin>
+  <id>com.aiunng.prj.idea.plugin.sql.generate</id>
+  <name>Sql-Generate</name>
+  <version>2021.07.16.1</version>
+  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/ws3isn">w*Yu</vendor>
+
+  <description><![CDATA[
+      <br>
+      <p><font size="6">Date-convert helps you develop faster.</font></p>
+      <p><font size="6">Date-convert helps you develop faster.</font></p>
+      <p><font size="6">Date-convert helps you develop faster.</font></p>
+    ]]></description>
+
+  <change-notes><![CDATA[
+
+    ]]>
+  </change-notes>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="Sql Generate" description="sql语句生成">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift S"/>
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+
+</idea-plugin>
