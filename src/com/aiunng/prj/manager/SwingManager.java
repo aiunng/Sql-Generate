@@ -137,7 +137,7 @@ public class SwingManager {
     JTextArea tableDesc = addJTextArea(CREATE_TABLE.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(CREATE_TABLE.getCode(), "Field:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(CREATE_TABLE.getCode(), "Column:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
     y = y + yOffset;
     addLabel(CREATE_TABLE.getCode(), "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea fName = addJTextArea(CREATE_TABLE.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -171,7 +171,7 @@ public class SwingManager {
     JTextArea fComment = addJTextArea(CREATE_TABLE.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(CREATE_TABLE.getCode(), "Key:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(CREATE_TABLE.getCode(), "Index:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
     y = y + yOffset;
     addLabel(CREATE_TABLE.getCode(), "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea kname = addJTextArea(CREATE_TABLE.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -181,7 +181,7 @@ public class SwingManager {
     JComboBox kType = addKeyTypeComboBox(CREATE_TABLE.getCode(), TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
 
     y = y + yOffsetBThen;
-    addLabel(CREATE_TABLE.getCode(), "Fileds:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
+    addLabel(CREATE_TABLE.getCode(), "Columns:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JComboBox kFileds = addDefaultKeyComboBox(CREATE_TABLE.getCode(), TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
 
     createTablebuttonZone(contentPanel, y, answer, tableName, tableDesc, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment,
@@ -198,7 +198,7 @@ public class SwingManager {
     JTextArea tableName = addJTextArea(ADD_FILED.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(ADD_FILED.getCode(), "Field:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(ADD_FILED.getCode(), "Column:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
     y = y + yOffset;
     addLabel(ADD_FILED.getCode(), "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea fName = addJTextArea(ADD_FILED.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -231,7 +231,12 @@ public class SwingManager {
     addLabel(ADD_FILED.getCode(), "Comment:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea fComment = addJTextArea(ADD_FILED.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
-    addFiledButtonZone(contentPanel, y, answer, tableName, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment);
+    y = y + yOffsetBThen;
+    addLabel(ADD_FILED.getCode(), "After:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
+    JTextArea fAfter = addJTextArea(ADD_FILED.getCode(), null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+
+
+    addFiledButtonZone(contentPanel, y, answer, tableName, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment,fAfter);
   }
 
   private static void createTablebuttonZone(JPanel contentPanel, int y, JTextArea answer, JTextArea tableName, JTextArea tableDesc,
@@ -242,7 +247,7 @@ public class SwingManager {
     int buttonXOffSet = 110;
     y = y + 15;
     // 新增字段按钮，点击后增量到右侧展示
-    JButton filedButton = addJButton(CREATE_TABLE.getCode(), "add filed", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
+    JButton filedButton = addJButton(CREATE_TABLE.getCode(), "add column", TEXT_NORMAL, buttonX, y, 110, 25, contentPanel);
     filedButton.addActionListener((o) -> {
 
       List<TableField> collect = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
@@ -267,7 +272,7 @@ public class SwingManager {
 
     // 新增索引按钮，点击后增量到右侧展示
     buttonX = buttonX + buttonXOffSet;
-    JButton keyButton = addJButton(CREATE_TABLE.getCode(), "add key", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
+    JButton keyButton = addJButton(CREATE_TABLE.getCode(), "add index", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
     keyButton.addActionListener((o) -> {
 
       List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtils.equals(n.getName(), kname.getText())).collect(toList());
@@ -349,13 +354,13 @@ public class SwingManager {
 
   private static void addFiledButtonZone(JPanel contentPanel, int y, JTextArea answer, JTextArea tableName,
       JTextArea fName, JComboBox fType, JTextArea fLenth, JComboBox fNotNullh, JComboBox fDefault, JComboBox fUpdate, JComboBox fIncrement,
-      JTextArea fComment) {
+      JTextArea fComment,JTextArea fAfter) {
 
     int buttonX = 355;
     int buttonXOffSet = 110;
-    y = y + 185;
+    y = y + 150;
     // 新增字段按钮，点击后增量到右侧展示
-    JButton filedButton = addJButton(ADD_FILED.getCode(), "add filed", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
+    JButton filedButton = addJButton(ADD_FILED.getCode(), "add column", TEXT_NORMAL, buttonX, y, 110, 25, contentPanel);
     filedButton.addActionListener((o) -> {
 
       List<TableField> collect = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
@@ -370,6 +375,7 @@ public class SwingManager {
         tableField.setNotNull(Boolean.parseBoolean(fNotNullh.getSelectedItem().toString()));
         tableField.setDefaultValue(fDefault.getSelectedItem().toString());
         tableField.setOnUpdate(fUpdate.getSelectedItem().toString());
+        tableField.setAfter(fAfter.getText());
         tableFields.add(tableField);
         table.setTableFields(tableFields);
       }
@@ -394,6 +400,7 @@ public class SwingManager {
         tableField.setNotNull(Boolean.parseBoolean(fNotNullh.getSelectedItem().toString()));
         tableField.setDefaultValue(fDefault.getSelectedItem().toString());
         tableField.setOnUpdate(fUpdate.getSelectedItem().toString());
+        tableField.setAfter(fAfter.getText());
         tableFields.add(tableField);
       }
 
@@ -418,6 +425,7 @@ public class SwingManager {
       fUpdate.setSelectedIndex(0);
       fIncrement.setSelectedIndex(0);
       fComment.setText("");
+      fAfter.setText("");
 
       tableFields.clear();
       table = new Table();

@@ -45,7 +45,7 @@ public class TableField {
   private String onUpdate;
 
   /**
-   * 表示在哪个字段之后，新增字段时用
+   * 表示在该字段之后，新增字段时用
    */
   private String after;
 
@@ -132,7 +132,7 @@ public class TableField {
         append(StringUtil.isBlank(this.onUpdate) ? "" : "ON UPDATE " + this.onUpdate).append(" ").
         append(this.autoIncrement ? "AUTO_INCREMENT" : " ").append(" ").
         append(StringUtil.isBlank(this.comment) ? "" : "COMMENT '" + this.comment + "'");
-    result.append(StringUtil.isBlank(this.after) ? "" : " `" + this.after + "`");
+    result.append(StringUtil.isBlank(this.after) ? "" : " AFTER `" + this.after + "`");
     result.append(", \n");
     return result.toString();
   }
