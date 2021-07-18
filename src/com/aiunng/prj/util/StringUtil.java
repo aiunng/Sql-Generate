@@ -246,8 +246,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷβ���Ŀհף�����ַ�����<code>null</code>����Ȼ����<code>null</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trim(null)          = null
    * StringUtil.trim("")            = ""
@@ -288,8 +287,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷ���Ŀհף�����ַ�����<code>null</code>���򷵻�<code>null</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trimStart(null)         = null
    * StringUtil.trimStart("")           = ""
@@ -332,8 +330,7 @@ public class StringUtil {
    * ��ȥ�ַ���β���Ŀհף�����ַ�����<code>null</code>���򷵻�<code>null</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trimEnd(null)       = null
    * StringUtil.trimEnd("")         = ""
@@ -376,8 +373,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷβ���Ŀհף��������ַ����ǿ��ַ���<code>""</code>���򷵻�<code>null</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trimToNull(null)          = null
    * StringUtil.trimToNull("")            = null
@@ -398,8 +394,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷβ���Ŀհף��������ַ����ǿ��ַ���<code>""</code>���򷵻�<code>null</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trim(null, *)          = null
    * StringUtil.trim("", *)            = null
@@ -429,8 +424,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷβ���Ŀհף�����ַ�����<code>null</code>���򷵻ؿ��ַ���<code>""</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trimToEmpty(null)          = ""
    * StringUtil.trimToEmpty("")            = ""
@@ -451,8 +445,7 @@ public class StringUtil {
    * ��ȥ�ַ���ͷβ���Ŀհף�����ַ�����<code>null</code>���򷵻ؿ��ַ���<code>""</code>��
    *
    * <p>
-   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף�
-   * ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
+   * ע�⣬��<code>String.trim</code>��ͬ���˷���ʹ��<code>Character.isWhitespace</code>���ж��հף� ������Գ�ȥӢ���ַ���֮��������հף������Ŀո�
    * <pre>
    * StringUtil.trim(null, *)          = ""
    * StringUtil.trim("", *)            = ""
@@ -1116,18 +1109,22 @@ public class StringUtil {
     protected void inWord(StringBuffer buffer, char ch) {
       buffer.append(Character.toLowerCase(ch));
     }
+
     @Override
     protected void startDigitSentence(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void startDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDelimiter(StringBuffer buffer, char ch) {
       if (ch != UNDERSCORE) {
@@ -1141,26 +1138,32 @@ public class StringUtil {
     protected void startSentence(StringBuffer buffer, char ch) {
       buffer.append(Character.toUpperCase(ch));
     }
+
     @Override
     protected void startWord(StringBuffer buffer, char ch) {
       buffer.append(Character.toUpperCase(ch));
     }
+
     @Override
     protected void inWord(StringBuffer buffer, char ch) {
       buffer.append(Character.toLowerCase(ch));
     }
+
     @Override
     protected void startDigitSentence(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void startDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDelimiter(StringBuffer buffer, char ch) {
       if (ch != UNDERSCORE) {
@@ -1174,6 +1177,7 @@ public class StringUtil {
     protected void startSentence(StringBuffer buffer, char ch) {
       buffer.append(Character.toUpperCase(ch));
     }
+
     @Override
     protected void startWord(StringBuffer buffer, char ch) {
       if (!isDelimiter(buffer.charAt(buffer.length() - 1))) {
@@ -1182,14 +1186,17 @@ public class StringUtil {
 
       buffer.append(Character.toUpperCase(ch));
     }
+
     @Override
     protected void inWord(StringBuffer buffer, char ch) {
       buffer.append(Character.toUpperCase(ch));
     }
+
     @Override
     protected void startDigitSentence(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void startDigitWord(StringBuffer buffer, char ch) {
       if (!isDelimiter(buffer.charAt(buffer.length() - 1))) {
@@ -1198,10 +1205,12 @@ public class StringUtil {
 
       buffer.append(ch);
     }
+
     @Override
     protected void inDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDelimiter(StringBuffer buffer, char ch) {
       buffer.append(ch);
@@ -1213,6 +1222,7 @@ public class StringUtil {
     protected void startSentence(StringBuffer buffer, char ch) {
       buffer.append(Character.toLowerCase(ch));
     }
+
     @Override
     protected void startWord(StringBuffer buffer, char ch) {
       if (!isDelimiter(buffer.charAt(buffer.length() - 1))) {
@@ -1221,14 +1231,17 @@ public class StringUtil {
 
       buffer.append(Character.toLowerCase(ch));
     }
+
     @Override
     protected void inWord(StringBuffer buffer, char ch) {
       buffer.append(Character.toLowerCase(ch));
     }
+
     @Override
     protected void startDigitSentence(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void startDigitWord(StringBuffer buffer, char ch) {
       if (!isDelimiter(buffer.charAt(buffer.length() - 1))) {
@@ -1237,10 +1250,12 @@ public class StringUtil {
 
       buffer.append(ch);
     }
+
     @Override
     protected void inDigitWord(StringBuffer buffer, char ch) {
       buffer.append(ch);
     }
+
     @Override
     protected void inDelimiter(StringBuffer buffer, char ch) {
       buffer.append(ch);
@@ -2044,8 +2059,7 @@ public class StringUtil {
 
   /**
    * ���ַ����в���ָ���ַ��������е��ַ����������ص�һ��ƥ�����ʼ������ ����ַ���Ϊ<code>null</code>���򷵻�<code>-1</code>��
-   * ����ַ�������Ϊ<code>null</code>��գ�Ҳ����<code>-1</code>��
-   * ����ַ������ϰ���<code>""</code>�������ַ�����Ϊ<code>null</code>���򷵻�<code>str.length()</code>
+   * ����ַ�������Ϊ<code>null</code>��գ�Ҳ����<code>-1</code>�� ����ַ������ϰ���<code>""</code>�������ַ�����Ϊ<code>null</code>���򷵻�<code>str.length()</code>
    * <pre>
    * StringUtil.indexOfAny(null, *)                     = -1
    * StringUtil.indexOfAny(*, null)                     = -1
@@ -2265,8 +2279,7 @@ public class StringUtil {
 
   /**
    * ���ַ���β����ʼ����ָ���ַ��������е��ַ����������ص�һ��ƥ�����ʼ������ ����ַ���Ϊ<code>null</code>���򷵻�<code>-1</code>��
-   * ����ַ�������Ϊ<code>null</code>��գ�Ҳ����<code>-1</code>��
-   * ����ַ������ϰ���<code>""</code>�������ַ�����Ϊ<code>null</code>���򷵻�<code>str.length()</code>
+   * ����ַ�������Ϊ<code>null</code>��գ�Ҳ����<code>-1</code>�� ����ַ������ϰ���<code>""</code>�������ַ�����Ϊ<code>null</code>���򷵻�<code>str.length()</code>
    * <pre>
    * StringUtil.lastIndexOfAny(null, *)                   = -1
    * StringUtil.lastIndexOfAny(*, null)                   = -1
@@ -2357,8 +2370,7 @@ public class StringUtil {
    * ����ַ������Ƿ�ֻ����ָ���ַ������е��ַ���
    *
    * <p>
-   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>��
-   * ����ַ�����Ϊ<code>null</code>�򷵻�<code>false</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
+   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>false</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
    * </p>
    * <pre>
    * StringUtil.containsOnly(null, *)       = false
@@ -2394,8 +2406,7 @@ public class StringUtil {
    * ����ַ������Ƿ�ֻ����ָ���ַ������е��ַ���
    *
    * <p>
-   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>��
-   * ����ַ�����Ϊ<code>null</code>�򷵻�<code>false</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
+   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>false</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
    * </p>
    * <pre>
    * StringUtil.containsOnly(null, *)       = false
@@ -2423,8 +2434,7 @@ public class StringUtil {
    * ����ַ������Ƿ񲻰���ָ���ַ������е��ַ���
    *
    * <p>
-   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>true</code>��
-   * ���ǿ��ַ�����Զ����<code>true</code>.
+   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>true</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
    * </p>
    * <pre>
    * StringUtil.containsNone(null, *)       = true
@@ -2465,8 +2475,7 @@ public class StringUtil {
    * ����ַ������Ƿ񲻰���ָ���ַ������е��ַ���
    *
    * <p>
-   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>true</code>��
-   * ���ǿ��ַ�����Զ����<code>true</code>.
+   * ����ַ���Ϊ<code>null</code>���򷵻�<code>false</code>�� ����ַ�����Ϊ<code>null</code>�򷵻�<code>true</code>�� ���ǿ��ַ�����Զ����<code>true</code>.
    * </p>
    * <pre>
    * StringUtil.containsNone(null, *)       = true
@@ -3848,8 +3857,7 @@ public class StringUtil {
    * ���ַ���ת����ָ�����ȵ����ԣ����磺 ��"Now is the time for all good men"ת����"...is the time for..."��
    *
    * <p>
-   * ��<code>abbreviate(String, int)</code>���ƣ�����������һ������߽硱ƫ������
-   * ע�⣬����߽硱�����ַ�δ�س����ڽ���ַ���������ߣ���һ�������ڽ���ַ����С�
+   * ��<code>abbreviate(String, int)</code>���ƣ�����������һ������߽硱ƫ������ ע�⣬����߽硱�����ַ�δ�س����ڽ���ַ���������ߣ���һ�������ڽ���ַ����С�
    * </p>
    *
    * <p>
@@ -4000,8 +4008,7 @@ public class StringUtil {
    * ȡ�������ַ��������ƶȣ�<code>0</code>�����ַ�����ȣ�����Խ���ʾ�ַ���Խ����
    *
    * <p>
-   * ����㷨ȡ��<a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>��
-   * ��������Ǵ��ַ���1ת�䵽�ַ���2����Ҫ��ɾ����������滻�Ĳ�������
+   * ����㷨ȡ��<a href="http://www.merriampark.com/ld.htm">http://www.merriampark.com/ld.htm</a>�� ��������Ǵ��ַ���1ת�䵽�ַ���2����Ҫ��ɾ����������滻�Ĳ�������
    * </p>
    * <pre>
    * StringUtil.getLevenshteinDistance(null, *)             = IllegalArgumentException

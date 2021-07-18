@@ -1,6 +1,9 @@
 package com.aiunng.prj.entity;
 
 import com.aiunng.prj.enumerate.KeyTypeEnum;
+import com.aiunng.prj.util.StringUtil;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * 表索引信息
@@ -47,10 +50,13 @@ public class TableKey {
   }
 
   public String getKeyText() {
-    StringBuilder result = new StringBuilder("\t");
+    if (StringUtil.isBlank(this.name) && null == this.type && (null == this.fileds || StringUtil.isBlank(this.fileds[0]))) {
+      return "";
+    }
+    StringBuilder result = new StringBuilder("    ");
     String name = "`" + this.name + "` ";
     result.append(this.type.getCode()).append(" ").
-        append(null == this.name ? "" : name).append(" ");
+        append(StringUtil.isBlank(this.name) ? "" : name).append(" ");
 
     result.append("(");
     for (String filed : fileds) {

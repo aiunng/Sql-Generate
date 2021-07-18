@@ -1,5 +1,7 @@
 package com.aiunng.prj.enumerate;
 
+import com.aiunng.prj.util.StringUtil;
+
 /**
  * 索引类型
  *
@@ -33,4 +35,12 @@ public enum KeyTypeEnum {
     return desc;
   }
 
+  public static KeyTypeEnum getByCode(String code) {
+    for (KeyTypeEnum value : KeyTypeEnum.values()) {
+      if (StringUtil.equals(code, value.getCode())) {
+        return value;
+      }
+    }
+    return null;
+  }
 }

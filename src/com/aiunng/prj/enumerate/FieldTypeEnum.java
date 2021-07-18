@@ -1,5 +1,7 @@
 package com.aiunng.prj.enumerate;
 
+import com.aiunng.prj.util.StringUtil;
+
 /**
  * 字段类型
  *
@@ -57,5 +59,14 @@ public enum FieldTypeEnum {
 
   public String getDesc() {
     return desc;
+  }
+
+  public static FieldTypeEnum getByDesc(String desc) {
+    for (FieldTypeEnum value : FieldTypeEnum.values()) {
+      if (StringUtil.equals(desc, value.getDesc())) {
+        return value;
+      }
+    }
+    return null;
   }
 }

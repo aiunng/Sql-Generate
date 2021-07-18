@@ -2,6 +2,7 @@ package com.aiunng.prj.entity;
 
 import com.aiunng.prj.enumerate.FieldTypeEnum;
 import com.aiunng.prj.util.StringUtil;
+import java.util.Objects;
 
 /**
  * 字段信息
@@ -42,6 +43,11 @@ public class TableField {
    * 字段更新值（常用于更新时间）
    */
   private String onUpdate;
+
+  /**
+   * 表示在哪个字段之后，新增字段时用
+   */
+  private String after;
 
   public String getName() {
     return name;
@@ -107,8 +113,16 @@ public class TableField {
     this.onUpdate = onUpdate;
   }
 
+  public String getAfter() {
+    return after;
+  }
+
+  public void setAfter(String after) {
+    this.after = after;
+  }
+
   public String getFieldText() {
-    StringBuilder result = new StringBuilder("\t");
+    StringBuilder result = new StringBuilder("    ");
     String lenth = "(" + this.length + ") ";
     result.append("`").append(this.name).append("` ").
         append(this.fieldType.getDesc()).
@@ -117,7 +131,9 @@ public class TableField {
         append(StringUtil.isBlank(this.defaultValue) ? "" : "DEFAULT " + this.defaultValue).append(" ").
         append(StringUtil.isBlank(this.onUpdate) ? "" : "ON UPDATE " + this.onUpdate).append(" ").
         append(this.autoIncrement ? "AUTO_INCREMENT" : " ").append(" ").
-        append(StringUtil.isBlank(this.comment) ? "" : "COMMENT '" + this.comment).append("', \n");
+        append(StringUtil.isBlank(this.comment) ? "" : "COMMENT '" + this.comment + "'");
+    result.append(StringUtil.isBlank(this.after) ? "" : " `" + this.after + "`");
+    result.append(", \n");
     return result.toString();
   }
 }

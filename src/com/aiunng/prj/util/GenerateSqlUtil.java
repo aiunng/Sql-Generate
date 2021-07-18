@@ -7,6 +7,7 @@ import com.aiunng.prj.enumerate.FieldTypeEnum;
 import com.aiunng.prj.enumerate.KeyTypeEnum;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.collections.CollectionUtils;
 
 /**
  * @author：wangXinYu
@@ -15,19 +16,57 @@ import java.util.List;
 public class GenerateSqlUtil {
 
   public static String createTable(Table table) {
-
-    StringBuilder result = new StringBuilder("CREATE TABLE IF NOT EXISTS `" + table.getName() + "` (\n");
-    table.getTableFields().forEach((o) -> {
-      result.append(o.getFieldText());
-    });
-    table.getTableKeys().forEach((o) -> {
-      result.append(o.getKeyText());
-    });
-    result.deleteCharAt(result.lastIndexOf(","));
+    if (StringUtil.isBlank(table.getName())) {
+      return "";
+    }
+    StringBuilder result = new StringBuilder("\nCREATE TABLE IF NOT EXISTS `" + table.getName() + "` (\n");
+    if (CollectionUtils.isNotEmpty(table.getTableFields())) {
+      table.getTableFields().forEach((o) -> {
+        result.append(o.getFieldText());
+      });
+    }
+    if (CollectionUtils.isNotEmpty(table.getTableKeys())) {
+      table.getTableKeys().forEach((o) -> {
+        result.append(o.getKeyText());
+      });
+    }
+    if (result.toString().contains(",")) {
+      result.deleteCharAt(result.lastIndexOf(","));
+    }
     result.append("\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT ='" + table.getComment() + "';");
     return result.toString();
   }
 
+  public static String updateTableAddFile(Table table) {
+    if (StringUtil.isBlank(table.getName())) {
+      return "";
+    }
+    StringBuilder result = new StringBuilder();
+    if (CollectionUtils.isNotEmpty(table.getTableFields())) {
+      table.getTableFields().forEach((o) -> {
+        result.append("\nALTER TABLE `" + table.getName() + "` ADD COLUMN");
+        result.append(o.getFieldText());
+        if (result.toString().contains("\n")) {
+          result.deleteCharAt(result.lastIndexOf("\n"));
+        }
+        if (result.toString().contains(",")) {
+          result.deleteCharAt(result.lastIndexOf(","));
+        }
+        result.append(";");
+      });
+    }
+
+    return result.toString();
+  }
+
+  public static String updateTableAddKey(Table table) {
+    if (StringUtil.isBlank(table.getName())) {
+      return "";
+    }
+    StringBuilder result = new StringBuilder();
+
+    return result.toString();
+  }
 
 
   public static void main(String[] args) {
@@ -86,7 +125,7 @@ public class GenerateSqlUtil {
     TableKey tableKey2 = new TableKey();
     tableKey2.setName("index_name_date");
     tableKey2.setType(KeyTypeEnum.INDEX);
-    tableKey2.setFileds(new String[]{"name","date"});
+    tableKey2.setFileds(new String[]{"name", "date"});
     tableKeys.add(tableKey2);
 
     Table table = new Table();

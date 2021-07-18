@@ -1,8 +1,9 @@
 package com.aiunng.prj;
 
+import static com.aiunng.prj.manager.SwingManager.createAndShowGUI;
+
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author：wangXinYu
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class StartTask extends AnAction {
 
   @Override
-  public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-
+  public void actionPerformed(AnActionEvent anActionEvent) {
+    createAndShowGUI();
   }
 }
