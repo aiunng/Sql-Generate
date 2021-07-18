@@ -64,14 +64,28 @@ public class GenerateSqlUtil {
       return "";
     }
     StringBuilder result = new StringBuilder();
+    if (CollectionUtils.isNotEmpty(table.getTableKeys())) {
+      table.getTableKeys().forEach((o)->{
+        result.append("\nALTER TABLE `" + table.getName() + "` ADD ");
+        result.append(o.getKeyText());
+        if (result.toString().contains("\n")) {
+          result.deleteCharAt(result.lastIndexOf("\n"));
+        }
+        if (result.toString().contains(",")) {
+          result.deleteCharAt(result.lastIndexOf(","));
+        }
+        result.append(";");
+
+      });
+
+    }
 
     return result.toString();
   }
 
 
   public static void main(String[] args) {
-    System.out.println(createTable(initTestData()));
-
+    System.out.println(updateTableAddKey(initTestData()));
   }
 
   /**
