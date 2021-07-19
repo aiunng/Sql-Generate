@@ -1,18 +1,42 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.sql.generate</id>
-  <name>Sql-Generate</name>
-  <version>2021.07.16.1</version>
-  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/ws3isn">w*Yu</vendor>
+  <name>SQL-Generate</name>
+  <version>2021.07.16.1.01</version>
+  <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/rk1kp4">w*Yu</vendor>
 
   <description><![CDATA[
       <br>
-      <p><font size="6">Date-convert helps you develop faster.</font></p>
-      <p><font size="6">Date-convert helps you develop faster.</font></p>
-      <p><font size="6">Date-convert helps you develop faster.</font></p>
+      <p><font size="6">SQL-Generate helps you develop faster.</font></p>
+      <p><font size="5">How to use:</font></p>
+      <ul>
+        <li>Menu bar:tools -> SQL Generate</li>
+        <li>Shortcuts:[win]ctrl + shift + S , [mac]command + shift + S</li>
+      </ul>
+      <p><font size="5">Create Table:</font></p>
+      <ul>
+        <li>According to the input text, generate create table SQL</li>
+        <li></li>
+      </ul>
+      <p><font size="5">Alter Table:</font></p>
+      <ul>
+        <li>Provide add, delete, modify fields and indexes, generate corresponding SQL</li>
+        <li></li>
+      </ul>
+      <p><font size="5">Data Modify:</font></p>
+      <ul>
+        <li>Data modify, generate corresponding SQL</li>
+        <li></li>
+      </ul>
     ]]></description>
 
   <change-notes><![CDATA[
-
+      <p><font size="5">1.0.1</font></p>
+        <ul>
+          <li>[NEW]Create Table</li>
+          <li>[NEW]Alter Table</li>
+          <li>[NEW]Data Modify</li>
+        </ul>
+      <em></em>
     ]]>
   </change-notes>
 
@@ -29,7 +53,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="Sql Generate" description="sql语句生成">
+    <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="SQL Generate" description="sql语句生成">
       <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift S"/>
       <add-to-group group-id="ToolsMenu" anchor="last"/>
     </action>

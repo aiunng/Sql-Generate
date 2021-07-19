@@ -12,7 +12,7 @@ public enum OperatorTypeEnum {
    */
   CREATE_TABLE("CREATE_TABLE", "创建表"),
   ALTER_TABLE("ALTER_TABLE", "修改表"),
-  DATA_CHANGE("DATA_CHANGE", "数据变更"),
+  DATA_MODIFY("DATA_MODIFY", "数据变更"),
 
   ;
 

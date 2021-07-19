@@ -18,4 +18,14 @@ public class Constant {
   public static final Font TEXT_NORMAL = new Font("宋体", Font.PLAIN, 15);
   //正文小字号
   public static final Font TEXT_SMALL = new Font("宋体", Font.PLAIN, 12);
+
+  /**
+   * TODO 关于信息
+   */
+  public static final String ICON_URL = "";
+  public static final String VERSION = "版本2021.07.19 (1.0.1)";
+  public static final String ADVER = "SQL-Generate helps you develop faster";
+  public static final String BLOG_LINK = "https://www.yuque.com/aiunng/elrg1e/rk1kp4";
+  public static final String BLOG_TEXT = "<html><a href='"+BLOG_LINK+"'>使用帮助、提出建议、问题反馈</a></html>";
+  public static final String AUTHOR = "author：w*Yu";
 }

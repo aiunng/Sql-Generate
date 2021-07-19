@@ -5,9 +5,16 @@ import static com.aiunng.prj.enumerate.FieldTypeEnum.getByDesc;
 import static com.aiunng.prj.enumerate.KeyTypeEnum.getByCode;
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.ALTER_TABLE;
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.CREATE_TABLE;
+import static com.aiunng.prj.util.Constant.ADVER;
+import static com.aiunng.prj.util.Constant.AUTHOR;
+import static com.aiunng.prj.util.Constant.BLOG_LINK;
+import static com.aiunng.prj.util.Constant.BLOG_TEXT;
+import static com.aiunng.prj.util.Constant.ICON_URL;
 import static com.aiunng.prj.util.Constant.LEVE_3;
+import static com.aiunng.prj.util.Constant.TEXT_BOLD;
 import static com.aiunng.prj.util.Constant.TEXT_NORMAL;
 import static com.aiunng.prj.util.Constant.TEXT_SMALL;
+import static com.aiunng.prj.util.Constant.VERSION;
 import static com.aiunng.prj.util.GenerateSqlUtil.createTable;
 import static com.aiunng.prj.util.GenerateSqlUtil.updateTableAddFile;
 import static com.aiunng.prj.util.GenerateSqlUtil.updateTableAddKey;
@@ -32,12 +39,21 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.ui.JBUI;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Desktop;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import org.apache.commons.lang3.StringUtils;
@@ -56,7 +72,7 @@ public class SwingManager {
 
   public static void createAndShowGUI() {
     // 创建及设置窗口
-    JFrame frame = new JFrame("Sql-Generate");
+    JFrame frame = new JFrame("SQL-Generate");
     frame.setBounds(360, 100, 860, 660);
 
     Container contentPane = frame.getContentPane();
@@ -120,8 +136,8 @@ public class SwingManager {
     });
 
     // 卡片 - 数据变更
-    JButton dataChangeButton = addJButton("", "data change", TEXT_NORMAL, 270, 10, 120, 40, contentPanel);
-    dataChangeButton.addActionListener((o) -> {
+    JButton dataModifyButton = addJButton("", "data modify", TEXT_NORMAL, 270, 10, 120, 40, contentPanel);
+    dataModifyButton.addActionListener((o) -> {
       // 删除其他操作的展示内容
       getCreateTableComponentSet().forEach(contentPanel::remove);
       getAlterTableComponentSet().forEach(contentPanel::remove);
@@ -134,6 +150,11 @@ public class SwingManager {
 
       contentPanel.updateUI();
     });
+
+    /**
+     * 帮助信息
+     */
+    buildHelpRegion(contentPanel);
 
     // 关闭按钮
     frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -518,6 +539,81 @@ public class SwingManager {
       tableFields.clear();
       table = new Table();
       answer.setText("");
+    });
+  }
+
+  /**
+   * 帮助弹窗
+   *
+   * @param contentPanel
+   */
+  private static void buildHelpRegion(JPanel contentPanel) {
+
+    JButton cfgButton = addJButton("","help", TEXT_NORMAL, 720, 10, 120, 40, contentPanel);
+
+    cfgButton.addActionListener(e -> {
+      JDialog jDialog = new JDialog();
+      jDialog.setTitle("help");
+      jDialog.setBounds(610, 310, 220, 180);
+      jDialog.setVisible(true);
+      jDialog.setLayout(null);
+      // 禁止用户调整窗口大小
+      jDialog.setResizable(false);
+
+      Container contentPane = jDialog.getContentPane();
+
+      JLabel imgLabel = new JLabel();
+      ImageIcon img = null;
+      try {
+        img = new ImageIcon(new URL(ICON_URL));
+      } catch (MalformedURLException me) {
+        me.printStackTrace();
+      }
+      imgLabel.setIcon(img);
+      imgLabel.setBounds(85, 10, 50, 50);
+
+      int y1 = 70;
+      int offset1 = 20;
+
+      JLabel versionLabel = new JLabel(VERSION);
+      versionLabel.setBounds(55, y1, 150, 25);
+      versionLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + offset1;
+      JLabel textLabel = new JLabel(ADVER);
+      textLabel.setBounds(10, y1, 220, 25);
+      textLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + offset1;
+      JLabel linklabel = new JLabel(BLOG_TEXT);
+      // 光标类型
+      linklabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      linklabel.setBounds(35, y1, 200, 25);
+      linklabel.setFont(TEXT_BOLD);
+
+      // 鼠标监听
+      linklabel.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+          try {
+            //打开网址
+            Desktop.getDesktop().browse(new URI(BLOG_LINK));
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
+      });
+
+      y1 = y1 + offset1;
+      JLabel authorLabel = new JLabel(AUTHOR);
+      authorLabel.setBounds(70, y1, 100, 25);
+      authorLabel.setFont(TEXT_BOLD);
+
+      contentPane.add(imgLabel);
+      contentPane.add(versionLabel);
+      contentPane.add(textLabel);
+      contentPane.add(linklabel);
+      contentPane.add(authorLabel);
     });
   }
 

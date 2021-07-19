@@ -2,7 +2,7 @@ package com.aiunng.prj.util;
 
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.ALTER_TABLE;
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.CREATE_TABLE;
-import static com.aiunng.prj.enumerate.OperatorTypeEnum.DATA_CHANGE;
+import static com.aiunng.prj.enumerate.OperatorTypeEnum.DATA_MODIFY;
 
 import com.aiunng.prj.enumerate.AlterTypeEnum;
 import com.aiunng.prj.enumerate.FieldTypeEnum;
@@ -29,7 +29,7 @@ public class SwingUtil {
    */
   private static final Set<Component> createTableComponentSet = new HashSet<>();
   private static final Set<Component> alterTableComponentSet = new HashSet<>();
-  private static final Set<Component> dataChangeComponentSet = new HashSet<>();
+  private static final Set<Component> dataModifyComponentSet = new HashSet<>();
 
   public static Set<Component> getCreateTableComponentSet() {
     return createTableComponentSet;
@@ -39,8 +39,8 @@ public class SwingUtil {
     return alterTableComponentSet;
   }
 
-  public static Set<Component> getDataChangeComponentSet() {
-    return dataChangeComponentSet;
+  public static Set<Component> getDataModifyComponentSet() {
+    return dataModifyComponentSet;
   }
 
   /**
@@ -248,8 +248,8 @@ public class SwingUtil {
       createTableComponentSet.add(component);
     } else if (StringUtil.equals(ALTER_TABLE.getCode(), type)) {
       alterTableComponentSet.add(component);
-    } else if (StringUtil.equals(DATA_CHANGE.getCode(), type)) {
-      dataChangeComponentSet.add(component);
+    } else if (StringUtil.equals(DATA_MODIFY.getCode(), type)) {
+      dataModifyComponentSet.add(component);
     }
   }
 
