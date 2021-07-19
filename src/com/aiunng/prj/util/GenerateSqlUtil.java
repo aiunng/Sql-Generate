@@ -7,7 +7,6 @@ import com.aiunng.prj.enumerate.FieldTypeEnum;
 import com.aiunng.prj.enumerate.KeyTypeEnum;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.collections.CollectionUtils;
 
 /**
  * @author：wangXinYu
@@ -20,12 +19,12 @@ public class GenerateSqlUtil {
       return "";
     }
     StringBuilder result = new StringBuilder("\nCREATE TABLE IF NOT EXISTS `" + table.getName() + "` (\n");
-    if (CollectionUtils.isNotEmpty(table.getTableFields())) {
+    if (CollectionUtil.isNotEmpty(table.getTableFields())) {
       table.getTableFields().forEach((o) -> {
         result.append(o.getFieldText());
       });
     }
-    if (CollectionUtils.isNotEmpty(table.getTableKeys())) {
+    if (CollectionUtil.isNotEmpty(table.getTableKeys())) {
       table.getTableKeys().forEach((o) -> {
         result.append(o.getKeyText());
       });
@@ -42,7 +41,7 @@ public class GenerateSqlUtil {
       return "";
     }
     StringBuilder result = new StringBuilder();
-    if (CollectionUtils.isNotEmpty(table.getTableFields())) {
+    if (CollectionUtil.isNotEmpty(table.getTableFields())) {
       for (TableField o : table.getTableFields()) {
         if (null == o.getAlterType() || StringUtil.isBlank(o.getAlterType().getCode())) {
           continue;
@@ -67,7 +66,7 @@ public class GenerateSqlUtil {
       return "";
     }
     StringBuilder result = new StringBuilder();
-    if (CollectionUtils.isNotEmpty(table.getTableKeys())) {
+    if (CollectionUtil.isNotEmpty(table.getTableKeys())) {
       for (TableKey o : table.getTableKeys()) {
 
         if (null == o.getAlterType() || StringUtil.isBlank(o.getAlterType().getCode())) {

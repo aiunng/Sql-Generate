@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.sql.generate</id>
   <name>SQL-Generate</name>
-  <version>2021.07.16.1.01</version>
+  <version>2021.07.16.1</version>
   <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/rk1kp4">w*Yu</vendor>
 
   <description><![CDATA[
@@ -14,19 +14,37 @@
       </ul>
       <p><font size="5">Create Table:</font></p>
       <ul>
-        <li>According to the input text, generate create table SQL</li>
-        <li></li>
+        <li>generate create table SQL</li>
       </ul>
       <p><font size="5">Alter Table:</font></p>
       <ul>
-        <li>Provide add, delete, modify fields and indexes, generate corresponding SQL</li>
-        <li></li>
+        <li>Generate SQL statements for adding, modifying, deleting fields and indexes</li>
       </ul>
       <p><font size="5">Data Modify:</font></p>
       <ul>
-        <li>Data modify, generate corresponding SQL</li>
-        <li></li>
+        <li>Generate data change SQL statement</li>
       </ul>
+
+      <p><font size="5">如何使用:</font></p>
+      <ul>
+        <li>菜单栏:tools -> SQL Generate</li>
+        <li>快捷键:[win]ctrl + shift + S , [mac]command + shift + S</li>
+      </ul>
+      <p><font size="5">创建表:</font></p>
+      <ul>
+        <li>生成建表SQL语句</li>
+      </ul>
+      <p><font size="5">编辑表:</font></p>
+      <ul>
+        <li>生成新增、修改、删除字段和索引SQL语句</li>
+      </ul>
+      <p><font size="5">数据变更:</font></p>
+      <ul>
+        <li>生成数据变更SQL语句</li>
+      </ul>
+
+      <p><font size="5">使用界面：</font></p>
+      <img src="https://plugins.jetbrains.com/files/17263/screenshot_0781ee13-9b9b-4019-bf84-83b1326760b3" width="360"/>
     ]]></description>
 
   <change-notes><![CDATA[
@@ -34,7 +52,6 @@
         <ul>
           <li>[NEW]Create Table</li>
           <li>[NEW]Alter Table</li>
-          <li>[NEW]Data Modify</li>
         </ul>
       <em></em>
     ]]>

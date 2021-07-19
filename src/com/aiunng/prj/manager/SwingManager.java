@@ -35,6 +35,7 @@ import static java.util.stream.Collectors.toList;
 import com.aiunng.prj.entity.Table;
 import com.aiunng.prj.entity.TableField;
 import com.aiunng.prj.entity.TableKey;
+import com.aiunng.prj.util.StringUtil;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.ui.JBUI;
 import java.awt.BorderLayout;
@@ -56,7 +57,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * 生成sql
@@ -310,7 +310,7 @@ public class SwingManager {
     JButton filedButton = addJButton(type, "add column", TEXT_NORMAL, buttonX, y, 110, 25, contentPanel);
     filedButton.addActionListener((o) -> {
 
-      List<TableField> collect = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
+      List<TableField> collect = tableFields.stream().filter((n) -> StringUtil.equals(n.getName(), fName.getText())).collect(toList());
 
       if (collect.size() < 1) {
         TableField tableField = new TableField();
@@ -335,7 +335,7 @@ public class SwingManager {
     JButton keyButton = addJButton(type, "add index", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
     keyButton.addActionListener((o) -> {
 
-      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtils.equals(n.getName(), kname.getText())).collect(toList());
+      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtil.equals(n.getName(), kname.getText())).collect(toList());
 
       if (collect.size() < 1) {
         TableKey tableKey = new TableKey();
@@ -353,7 +353,7 @@ public class SwingManager {
     buttonX = buttonX + buttonXOffSet;
     JButton viewButton = addJButton(type, "preview", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
     viewButton.addActionListener((o) -> {
-      List<TableField> collectF = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
+      List<TableField> collectF = tableFields.stream().filter((n) -> StringUtil.equals(n.getName(), fName.getText())).collect(toList());
       if (collectF.size() < 1) {
         TableField tableField = new TableField();
         tableField.setName(fName.getText());
@@ -367,7 +367,7 @@ public class SwingManager {
         tableFields.add(tableField);
       }
 
-      List<TableKey> collectK = tableKeys.stream().filter((n) -> StringUtils.equals(n.getName(), kname.getText())).collect(toList());
+      List<TableKey> collectK = tableKeys.stream().filter((n) -> StringUtil.equals(n.getName(), kname.getText())).collect(toList());
 
       if (collectK.size() < 1) {
         TableKey tableKey = new TableKey();
@@ -424,7 +424,7 @@ public class SwingManager {
     JButton filedButton = addJButton(type, "add column", TEXT_NORMAL, buttonX, y, 110, 25, contentPanel);
     filedButton.addActionListener((o) -> {
 
-      List<TableField> collect = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
+      List<TableField> collect = tableFields.stream().filter((n) -> StringUtil.equals(n.getName(), fName.getText())).collect(toList());
 
       if (collect.size() < 1) {
         TableField tableField = new TableField();
@@ -452,7 +452,7 @@ public class SwingManager {
     JButton keyButton = addJButton(type, "add index", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
     keyButton.addActionListener((o) -> {
 
-      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtils.equals(n.getName(), kname.getText())).collect(toList());
+      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtil.equals(n.getName(), kname.getText())).collect(toList());
 
       if (collect.size() < 1) {
         TableKey tableKey = new TableKey();
@@ -474,7 +474,7 @@ public class SwingManager {
     JButton viewButton = addJButton(type, "preview", TEXT_NORMAL, buttonX, y, 100, 25, contentPanel);
     viewButton.addActionListener((o) -> {
 
-      List<TableField> collectF = tableFields.stream().filter((n) -> StringUtils.equals(n.getName(), fName.getText())).collect(toList());
+      List<TableField> collectF = tableFields.stream().filter((n) -> StringUtil.equals(n.getName(), fName.getText())).collect(toList());
       if (collectF.size() < 1) {
         TableField tableField = new TableField();
         tableField.setName(fName.getText());
@@ -491,7 +491,7 @@ public class SwingManager {
         tableFields.add(tableField);
       }
 
-      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtils.equals(n.getName(), kname.getText())).collect(toList());
+      List<TableKey> collect = tableKeys.stream().filter((n) -> StringUtil.equals(n.getName(), kname.getText())).collect(toList());
 
       if (collect.size() < 1) {
         TableKey tableKey = new TableKey();
