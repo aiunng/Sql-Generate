@@ -1,9 +1,11 @@
 package com.aiunng.prj.manager;
 
+import static com.aiunng.prj.enumerate.AlterTypeEnum.getByAlterTypeCode;
 import static com.aiunng.prj.enumerate.FieldTypeEnum.getByDesc;
 import static com.aiunng.prj.enumerate.KeyTypeEnum.getByCode;
-import static com.aiunng.prj.enumerate.OperatorTypeEnum.ADD_FILED;
+import static com.aiunng.prj.enumerate.OperatorTypeEnum.ALTER_TABLE;
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.CREATE_TABLE;
+import static com.aiunng.prj.util.Constant.LEVE_3;
 import static com.aiunng.prj.util.Constant.TEXT_NORMAL;
 import static com.aiunng.prj.util.Constant.TEXT_SMALL;
 import static com.aiunng.prj.util.GenerateSqlUtil.createTable;
@@ -18,7 +20,8 @@ import static com.aiunng.prj.util.SwingUtil.addJButton;
 import static com.aiunng.prj.util.SwingUtil.addJTextArea;
 import static com.aiunng.prj.util.SwingUtil.addKeyTypeComboBox;
 import static com.aiunng.prj.util.SwingUtil.addLabel;
-import static com.aiunng.prj.util.SwingUtil.getAddFiledComponentSet;
+import static com.aiunng.prj.util.SwingUtil.alterTypeComboBox;
+import static com.aiunng.prj.util.SwingUtil.getAlterTableComponentSet;
 import static com.aiunng.prj.util.SwingUtil.getCreateTableComponentSet;
 import static java.util.stream.Collectors.toList;
 
@@ -29,8 +32,6 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.ui.JBUI;
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -90,7 +91,7 @@ public class SwingManager {
     JButton createTableButton = addJButton("", "create table", TEXT_NORMAL, 10, 10, 120, 40, contentPanel);
     createTableButton.addActionListener((o) -> {
       // 删除其他操作的展示内容
-      getAddFiledComponentSet().forEach(contentPanel::remove);
+      getAlterTableComponentSet().forEach(contentPanel::remove);
       tableFields.clear();
       tableKeys.clear();
       table = new Table();
@@ -102,8 +103,8 @@ public class SwingManager {
       contentPanel.updateUI();
     });
 
-    // 卡片 - 表格新增字段
-    JButton alertTableButton = addJButton("", "alert table", TEXT_NORMAL, 140, 10, 120, 40, contentPanel);
+    // 卡片 - 修改表格
+    JButton alertTableButton = addJButton("", "alter table", TEXT_NORMAL, 140, 10, 120, 40, contentPanel);
     alertTableButton.addActionListener((o) -> {
       // 删除其他操作的展示内容
       getCreateTableComponentSet().forEach(contentPanel::remove);
@@ -113,8 +114,24 @@ public class SwingManager {
       answer.setText("");
 
       // 展示新增字段的内容
-      addFiledZone(ADD_FILED.getCode(), contentPanel, h, textX, boxX, y, yOffset, yOffsetBThen, boxWidth, boxHight, l2TitleX, answer);
+      alterTableZone(ALTER_TABLE.getCode(), contentPanel, h, textX, boxX, y, yOffset, yOffsetBThen, boxWidth, boxHight, l2TitleX, answer);
       // 更新当前窗体
+      contentPanel.updateUI();
+    });
+
+    // 卡片 - 数据变更
+    JButton dataChangeButton = addJButton("", "data change", TEXT_NORMAL, 270, 10, 120, 40, contentPanel);
+    dataChangeButton.addActionListener((o) -> {
+      // 删除其他操作的展示内容
+      getCreateTableComponentSet().forEach(contentPanel::remove);
+      getAlterTableComponentSet().forEach(contentPanel::remove);
+
+      tableFields.clear();
+      tableKeys.clear();
+      table = new Table();
+      answer.setText("");
+
+
       contentPanel.updateUI();
     });
 
@@ -129,7 +146,7 @@ public class SwingManager {
       int boxHight,
       int l2TitleX, JTextArea answer) {
     y = y + 50;
-    addLabel(type, "Table:", TEXT_NORMAL, 10, y, 100, h, contentPanel);
+    addLabel(type, "Table:", LEVE_3, 10, y, 100, h, contentPanel);
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
     JTextArea tableName = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -139,7 +156,7 @@ public class SwingManager {
     JTextArea tableDesc = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(type, "Column:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(type, "Column:", LEVE_3, 10, y, 660, h, contentPanel);
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea fName = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -173,7 +190,7 @@ public class SwingManager {
     JTextArea fComment = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(type, "Index:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(type, "Index:", LEVE_3, 10, y, 660, h, contentPanel);
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea kname = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -192,17 +209,19 @@ public class SwingManager {
         kType, kFileds);
   }
 
-  private static void addFiledZone(String type, JPanel contentPanel, int h, int textX, int boxX, int y, int yOffset, int yOffsetBThen, int boxWidth,
+  private static void alterTableZone(String type, JPanel contentPanel, int h, int textX, int boxX, int y, int yOffset, int yOffsetBThen, int boxWidth,
       int boxHight,
       int l2TitleX, JTextArea answer) {
     y = y + 50;
-    addLabel(type, "Table:", TEXT_NORMAL, 10, y, 100, h, contentPanel);
+    addLabel(type, "Table:", LEVE_3, 10, y, 100, h, contentPanel);
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
     JTextArea tableName = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(type, "Column:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(type, "Column:", LEVE_3, 10, y, 200, h, contentPanel);
+    JComboBox alterTypeColumn = alterTypeComboBox(type, TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
+
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea fName = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -240,7 +259,9 @@ public class SwingManager {
     JTextArea fAfter = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
 
     y = y + yOffset;
-    addLabel(type, "Index:", TEXT_NORMAL, 10, y, 660, h, contentPanel);
+    addLabel(type, "Index:", LEVE_3, 10, y, 660, h, contentPanel);
+    JComboBox alterTypeIndex = alterTypeComboBox(type, TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
+
     y = y + yOffset;
     addLabel(type, "Name:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JTextArea kname = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
@@ -254,7 +275,7 @@ public class SwingManager {
     JComboBox kFileds = addDefaultKeyComboBox(type, TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
 
     addFiledButtonZone(type, contentPanel, y, answer, tableName, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment, fAfter,
-        kname, kType, kFileds);
+        kname, kType, kFileds, alterTypeColumn, alterTypeIndex);
   }
 
   private static void createTablebuttonZone(String type, JPanel contentPanel, int y, JTextArea answer, JTextArea tableName, JTextArea tableDesc,
@@ -372,7 +393,8 @@ public class SwingManager {
 
   private static void addFiledButtonZone(String type, JPanel contentPanel, int y, JTextArea answer, JTextArea tableName,
       JTextArea fName, JComboBox fType, JTextArea fLenth, JComboBox fNotNullh, JComboBox fDefault, JComboBox fUpdate, JComboBox fIncrement,
-      JTextArea fComment, JTextArea fAfter, JTextArea kname, JComboBox kType, JComboBox kFileds) {
+      JTextArea fComment, JTextArea fAfter, JTextArea kname, JComboBox kType, JComboBox kFileds,
+      JComboBox alterTypeColumn, JComboBox alterTypeIndex) {
 
     int buttonX = 355;
     int buttonXOffSet = 110;
@@ -394,6 +416,7 @@ public class SwingManager {
         tableField.setDefaultValue(fDefault.getSelectedItem().toString());
         tableField.setOnUpdate(fUpdate.getSelectedItem().toString());
         tableField.setAfter(fAfter.getText());
+        tableField.setAlterType(getByAlterTypeCode(alterTypeColumn.getSelectedItem().toString()));
         tableFields.add(tableField);
         table.setTableFields(tableFields);
       }
@@ -415,6 +438,8 @@ public class SwingManager {
         tableKey.setName(kname.getText());
         tableKey.setType(getByCode(kType.getSelectedItem().toString()));
         tableKey.setFileds(kFileds.getSelectedItem().toString().split(","));
+        tableKey.setAlterType(getByAlterTypeCode(alterTypeIndex.getSelectedItem().toString()));
+
         tableKeys.add(tableKey);
         table.setTableKeys(tableKeys);
       }
@@ -440,6 +465,8 @@ public class SwingManager {
         tableField.setDefaultValue(fDefault.getSelectedItem().toString());
         tableField.setOnUpdate(fUpdate.getSelectedItem().toString());
         tableField.setAfter(fAfter.getText());
+        tableField.setAlterType(getByAlterTypeCode(alterTypeColumn.getSelectedItem().toString()));
+
         tableFields.add(tableField);
       }
 
@@ -450,6 +477,8 @@ public class SwingManager {
         tableKey.setName(kname.getText());
         tableKey.setType(getByCode(kType.getSelectedItem().toString()));
         tableKey.setFileds(kFileds.getSelectedItem().toString().split(","));
+        tableKey.setAlterType(getByAlterTypeCode(alterTypeIndex.getSelectedItem().toString()));
+
         tableKeys.add(tableKey);
       }
 
@@ -481,6 +510,9 @@ public class SwingManager {
       kname.setText("");
       kType.setSelectedIndex(0);
       kFileds.setSelectedIndex(0);
+
+      alterTypeIndex.setSelectedIndex(0);
+      alterTypeColumn.setSelectedIndex(0);
 
       tableKeys.clear();
       tableFields.clear();

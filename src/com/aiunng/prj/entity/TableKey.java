@@ -1,9 +1,8 @@
 package com.aiunng.prj.entity;
 
+import com.aiunng.prj.enumerate.AlterTypeEnum;
 import com.aiunng.prj.enumerate.KeyTypeEnum;
 import com.aiunng.prj.util.StringUtil;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * 表索引信息
@@ -24,6 +23,11 @@ public class TableKey {
    * 索引字段
    */
   private String[] fileds;
+
+  /**
+   * 修改索引-修改类型
+   */
+  private AlterTypeEnum alterType;
 
   public String getName() {
     return name;
@@ -49,11 +53,24 @@ public class TableKey {
     this.fileds = fileds;
   }
 
+  public AlterTypeEnum getAlterType() {
+    return alterType;
+  }
+
+  public void setAlterType(AlterTypeEnum alterType) {
+    this.alterType = alterType;
+  }
+
   public String getKeyText() {
     if (StringUtil.isBlank(this.name) && null == this.type && (null == this.fileds || StringUtil.isBlank(this.fileds[0]))) {
       return "";
     }
     StringBuilder result = new StringBuilder("    ");
+
+    if (null != this.alterType) {
+      result.append(" " + this.alterType.getCode() + " ");
+    }
+
     String name = "`" + this.name + "` ";
     result.append(this.type.getCode()).append(" ").
         append(StringUtil.isBlank(this.name) ? "" : name).append(" ");

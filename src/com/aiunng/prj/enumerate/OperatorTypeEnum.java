@@ -11,8 +11,8 @@ public enum OperatorTypeEnum {
    * 操作类型
    */
   CREATE_TABLE("CREATE_TABLE", "创建表"),
-  ADD_FILED("ADD_FILED", "新增表字段"),
-  ADD_INDEX("ADD_INDEX", "新增索引"),
+  ALTER_TABLE("ALTER_TABLE", "修改表"),
+  DATA_CHANGE("DATA_CHANGE", "数据变更"),
 
   ;
 

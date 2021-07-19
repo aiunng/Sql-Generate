@@ -1,8 +1,10 @@
 package com.aiunng.prj.util;
 
-import static com.aiunng.prj.enumerate.OperatorTypeEnum.ADD_FILED;
+import static com.aiunng.prj.enumerate.OperatorTypeEnum.ALTER_TABLE;
 import static com.aiunng.prj.enumerate.OperatorTypeEnum.CREATE_TABLE;
+import static com.aiunng.prj.enumerate.OperatorTypeEnum.DATA_CHANGE;
 
+import com.aiunng.prj.enumerate.AlterTypeEnum;
 import com.aiunng.prj.enumerate.FieldTypeEnum;
 import com.aiunng.prj.enumerate.KeyTypeEnum;
 import com.intellij.ui.components.JBScrollPane;
@@ -22,16 +24,23 @@ import javax.swing.JTextArea;
  * @date：2021/7/16 4:56 下午
  */
 public class SwingUtil {
-
+  /**
+   * 存放当前操作类型使用的组件，以便切换卡片时删除
+   */
   private static final Set<Component> createTableComponentSet = new HashSet<>();
-  private static final Set<Component> addFiledComponentSet = new HashSet<>();
+  private static final Set<Component> alterTableComponentSet = new HashSet<>();
+  private static final Set<Component> dataChangeComponentSet = new HashSet<>();
 
   public static Set<Component> getCreateTableComponentSet() {
     return createTableComponentSet;
   }
 
-  public static Set<Component> getAddFiledComponentSet() {
-    return addFiledComponentSet;
+  public static Set<Component> getAlterTableComponentSet() {
+    return alterTableComponentSet;
+  }
+
+  public static Set<Component> getDataChangeComponentSet() {
+    return dataChangeComponentSet;
   }
 
   /**
@@ -51,11 +60,7 @@ public class SwingUtil {
     label.setFont(font);
     label.setBounds(x, y, width, height);
     contentPanel.add(label);
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(label);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(label);
-    }
+    addComponentTypeSet(type, label);
     return label;
   }
 
@@ -77,11 +82,7 @@ public class SwingUtil {
     textArea.setBounds(x, y, width, height);
     textArea.setText(text);
     contentPanel.add(textArea);
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(textArea);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(textArea);
-    }
+    addComponentTypeSet(type, textArea);
     return textArea;
   }
 
@@ -103,11 +104,7 @@ public class SwingUtil {
     button.setBounds(x, y, width, height);
     contentPanel.add(button);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(button);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(button);
-    }
+    addComponentTypeSet(type, button);
     return button;
   }
 
@@ -138,11 +135,7 @@ public class SwingUtil {
     comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(comboBox);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(comboBox);
-    }
+    addComponentTypeSet(type, comboBox);
 
     return comboBox;
   }
@@ -163,11 +156,7 @@ public class SwingUtil {
     comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(comboBox);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(comboBox);
-    }
+    addComponentTypeSet(type, comboBox);
 
     return comboBox;
   }
@@ -187,11 +176,7 @@ public class SwingUtil {
     comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(comboBox);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(comboBox);
-    }
+    addComponentTypeSet(type, comboBox);
 
     return comboBox;
   }
@@ -213,11 +198,7 @@ public class SwingUtil {
     comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(comboBox);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(comboBox);
-    }
+    addComponentTypeSet(type, comboBox);
 
     return comboBox;
   }
@@ -236,13 +217,41 @@ public class SwingUtil {
     comboBox.setEditable(true);
     contentPanel.add(comboBox);
 
-    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
-      createTableComponentSet.add(comboBox);
-    } else if (StringUtil.equals(ADD_FILED.getCode(), type)) {
-      addFiledComponentSet.add(comboBox);
-    }
+    addComponentTypeSet(type, comboBox);
 
     return comboBox;
   }
+
+  public static JComboBox alterTypeComboBox(String type, Font font, int x, int y, int width, int height, JPanel contentPanel) {
+    // 创建下拉框
+    JComboBox comboBox = new JComboBox();
+
+    // 绑定下拉框选项
+    comboBox.addItem("");
+    for (AlterTypeEnum value : AlterTypeEnum.values()) {
+      comboBox.addItem(value.getCode());
+    }
+
+    comboBox.setFont(font);
+    comboBox.setBounds(x, y, width, height);
+    comboBox.setSelectedIndex(0);
+    comboBox.setEditable(true);
+    contentPanel.add(comboBox);
+
+    addComponentTypeSet(type, comboBox);
+
+    return comboBox;
+  }
+
+  private static void addComponentTypeSet(String type, Component component) {
+    if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
+      createTableComponentSet.add(component);
+    } else if (StringUtil.equals(ALTER_TABLE.getCode(), type)) {
+      alterTableComponentSet.add(component);
+    } else if (StringUtil.equals(DATA_CHANGE.getCode(), type)) {
+      dataChangeComponentSet.add(component);
+    }
+  }
+
 
 }

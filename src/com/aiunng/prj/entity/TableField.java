@@ -1,8 +1,8 @@
 package com.aiunng.prj.entity;
 
+import com.aiunng.prj.enumerate.AlterTypeEnum;
 import com.aiunng.prj.enumerate.FieldTypeEnum;
 import com.aiunng.prj.util.StringUtil;
-import java.util.Objects;
 
 /**
  * 字段信息
@@ -45,9 +45,14 @@ public class TableField {
   private String onUpdate;
 
   /**
-   * 表示在该字段之后，新增字段时用
+   * 表示在该字段之后，alter-add字段时用
    */
   private String after;
+
+  /**
+   * 修改字段-修改类型
+   */
+  private AlterTypeEnum alterType;
 
   public String getName() {
     return name;
@@ -121,8 +126,20 @@ public class TableField {
     this.after = after;
   }
 
+  public AlterTypeEnum getAlterType() {
+    return alterType;
+  }
+
+  public void setAlterType(AlterTypeEnum alterType) {
+    this.alterType = alterType;
+  }
+
   public String getFieldText() {
     StringBuilder result = new StringBuilder("    ");
+    if (null != this.alterType) {
+      result.append(" " + this.alterType.getCode() + " COLUMN ");
+    }
+
     String lenth = "(" + this.length + ") ";
     result.append("`").append(this.name).append("` ").
         append(this.fieldType.getDesc()).

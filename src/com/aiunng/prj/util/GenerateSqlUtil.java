@@ -43,8 +43,11 @@ public class GenerateSqlUtil {
     }
     StringBuilder result = new StringBuilder();
     if (CollectionUtils.isNotEmpty(table.getTableFields())) {
-      table.getTableFields().forEach((o) -> {
-        result.append("\nALTER TABLE `" + table.getName() + "` ADD COLUMN");
+      for (TableField o : table.getTableFields()) {
+        if (null == o.getAlterType() || StringUtil.isBlank(o.getAlterType().getCode())) {
+          continue;
+        }
+        result.append("\nALTER TABLE `" + table.getName() + "`");
         result.append(o.getFieldText());
         if (result.toString().contains("\n")) {
           result.deleteCharAt(result.lastIndexOf("\n"));
@@ -53,7 +56,7 @@ public class GenerateSqlUtil {
           result.deleteCharAt(result.lastIndexOf(","));
         }
         result.append(";");
-      });
+      }
     }
 
     return result.toString();
@@ -65,8 +68,13 @@ public class GenerateSqlUtil {
     }
     StringBuilder result = new StringBuilder();
     if (CollectionUtils.isNotEmpty(table.getTableKeys())) {
-      table.getTableKeys().forEach((o)->{
-        result.append("\nALTER TABLE `" + table.getName() + "` ADD ");
+      for (TableKey o : table.getTableKeys()) {
+
+        if (null == o.getAlterType() || StringUtil.isBlank(o.getAlterType().getCode())) {
+          continue;
+        }
+
+        result.append("\nALTER TABLE `" + table.getName() + "`");
         result.append(o.getKeyText());
         if (result.toString().contains("\n")) {
           result.deleteCharAt(result.lastIndexOf("\n"));
@@ -75,8 +83,7 @@ public class GenerateSqlUtil {
           result.deleteCharAt(result.lastIndexOf(","));
         }
         result.append(";");
-
-      });
+      }
 
     }
 
