@@ -23,7 +23,7 @@ public class Constant {
    * 关于信息
    */
   public static final String ICON_URL = "https://plugins.jetbrains.com/files/17263/screenshot_1e060420-54b0-4b2e-aae1-e593f63d83be";
-  public static final String VERSION = "版本2021.07.19 (1.0.1)";
+  public static final String VERSION = "版本2021.10.22 (1.0.2)";
   public static final String ADVER = "SQL-Generate helps you develop faster";
   public static final String BLOG_LINK = "https://www.yuque.com/aiunng/elrg1e/rk1kp4";
   public static final String BLOG_TEXT = "<html><a href='"+BLOG_LINK+"'>使用帮助、提出建议、问题反馈</a></html>";
