@@ -243,6 +243,48 @@ public class SwingUtil {
     return comboBox;
   }
 
+  // public static JComboBox modifyTypeComboBox(String type, Font font, int x, int y, int width, int height, JPanel contentPanel) {
+  //   // 创建下拉框
+  //   JComboBox comboBox = new JComboBox();
+  //
+  //   // 绑定下拉框选项
+  //   comboBox.addItem("");
+  //   for (DateModifyTypeEnum value : DateModifyTypeEnum.values()) {
+  //     comboBox.addItem(value.getCode());
+  //   }
+  //
+  //   comboBox.setFont(font);
+  //   comboBox.setBounds(x, y, width, height);
+  //   comboBox.setSelectedIndex(0);
+  //   comboBox.setEditable(true);
+  //   contentPanel.add(comboBox);
+  //
+  //   addComponentTypeSet(type, comboBox);
+  //
+  //   return comboBox;
+  // }
+
+  // public static JComboBox matchTypeComboBox(String type, Font font, int x, int y, int width, int height, JPanel contentPanel) {
+  //   // 创建下拉框
+  //   JComboBox comboBox = new JComboBox();
+  //
+  //   // 绑定下拉框选项
+  //   comboBox.addItem("");
+  //   for (MatchTypeEnum value : MatchTypeEnum.values()) {
+  //     comboBox.addItem(value.getCode());
+  //   }
+  //
+  //   comboBox.setFont(font);
+  //   comboBox.setBounds(x, y, width, height);
+  //   comboBox.setSelectedIndex(0);
+  //   comboBox.setEditable(true);
+  //   contentPanel.add(comboBox);
+  //
+  //   addComponentTypeSet(type, comboBox);
+  //
+  //   return comboBox;
+  // }
+
   private static void addComponentTypeSet(String type, Component component) {
     if (StringUtil.equals(CREATE_TABLE.getCode(), type)) {
       createTableComponentSet.add(component);

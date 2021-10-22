@@ -69,6 +69,7 @@ public class SwingManager {
   private static Table table = new Table();
   private static final List<TableField> tableFields = new ArrayList<>();
   private static final List<TableKey> tableKeys = new ArrayList<>();
+  //private static ModifyData modifyData = new ModifyData();
 
   public static void createAndShowGUI() {
     // 创建及设置窗口
@@ -108,6 +109,7 @@ public class SwingManager {
     createTableButton.addActionListener((o) -> {
       // 删除其他操作的展示内容
       getAlterTableComponentSet().forEach(contentPanel::remove);
+      //getDataModifyComponentSet().forEach(contentPanel::remove);
       tableFields.clear();
       tableKeys.clear();
       table = new Table();
@@ -124,12 +126,13 @@ public class SwingManager {
     alertTableButton.addActionListener((o) -> {
       // 删除其他操作的展示内容
       getCreateTableComponentSet().forEach(contentPanel::remove);
+      //getDataModifyComponentSet().forEach(contentPanel::remove);
       tableFields.clear();
       tableKeys.clear();
       table = new Table();
       answer.setText("");
 
-      // 展示新增字段的内容
+      // 展示编辑表格的内容
       alterTableZone(ALTER_TABLE.getCode(), contentPanel, h, textX, boxX, y, yOffset, yOffsetBThen, boxWidth, boxHight, l2TitleX, answer);
       // 更新当前窗体
       contentPanel.updateUI();
@@ -147,6 +150,7 @@ public class SwingManager {
       table = new Table();
       answer.setText("");
 
+      //modifyDataZone(DATA_MODIFY.getCode(), contentPanel, h, textX, boxX, y, yOffset, yOffsetBThen, boxWidth, boxHight, l2TitleX, answer);
 
       contentPanel.updateUI();
     });
@@ -295,7 +299,7 @@ public class SwingManager {
     addLabel(type, "Columns:", TEXT_NORMAL, l2TitleX, y, 660, h, contentPanel);
     JComboBox kFileds = addDefaultKeyComboBox(type, TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
 
-    addFiledButtonZone(type, contentPanel, y, answer, tableName, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment, fAfter,
+    alterTableButtonZone(type, contentPanel, y, answer, tableName, fName, fType, fLenth, fNotNullh, fDefault, fUpdate, fIncrement, fComment, fAfter,
         kname, kType, kFileds, alterTypeColumn, alterTypeIndex);
   }
 
@@ -412,7 +416,7 @@ public class SwingManager {
     });
   }
 
-  private static void addFiledButtonZone(String type, JPanel contentPanel, int y, JTextArea answer, JTextArea tableName,
+  private static void alterTableButtonZone(String type, JPanel contentPanel, int y, JTextArea answer, JTextArea tableName,
       JTextArea fName, JComboBox fType, JTextArea fLenth, JComboBox fNotNullh, JComboBox fDefault, JComboBox fUpdate, JComboBox fIncrement,
       JTextArea fComment, JTextArea fAfter, JTextArea kname, JComboBox kType, JComboBox kFileds,
       JComboBox alterTypeColumn, JComboBox alterTypeIndex) {
@@ -549,7 +553,7 @@ public class SwingManager {
    */
   private static void buildHelpRegion(JPanel contentPanel) {
 
-    JButton cfgButton = addJButton("","help", TEXT_NORMAL, 720, 10, 120, 40, contentPanel);
+    JButton cfgButton = addJButton("", "help", TEXT_NORMAL, 720, 10, 120, 40, contentPanel);
 
     cfgButton.addActionListener(e -> {
       JDialog jDialog = new JDialog();
@@ -616,6 +620,47 @@ public class SwingManager {
       contentPane.add(authorLabel);
     });
   }
+
+  // private static void modifyDataZone(String type, JPanel contentPanel, int h, int textX, int boxX, int y, int yOffset, int yOffsetBThen, int boxWidth,
+  //     int boxHight,
+  //     int l2TitleX, JTextArea answer) {
+  //
+  //   l2TitleX = l2TitleX - 10;
+  //   y = y + 50;
+  //   addLabel(type, "Modify Type:", LEVE_3, 10, y, 200, h, contentPanel);
+  //   JComboBox modifyType = modifyTypeComboBox(type, TEXT_SMALL, boxX, y, boxWidth, boxHight, contentPanel);
+  //
+  //   y = y + yOffset + 20;
+  //   addLabel(type, "Table Name:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea tableName = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //
+  //   y = y + yOffset + 20;
+  //   addLabel(type, "Set Column:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea setColumn = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //
+  //   y = y + yOffset;
+  //   addLabel(type, "Set Value:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea setValue = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //
+  //   y = y + yOffset + 20;
+  //   addLabel(type, "Where Column:", TEXT_NORMAL, l2TitleX, y, 110, h, contentPanel);
+  //   JTextArea whereColumn = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //   y = y + yOffset;
+  //   JComboBox whereType = matchTypeComboBox(type, TEXT_SMALL, boxX, y, 60, boxHight, contentPanel);
+  //   y = y + yOffset;
+  //   addLabel(type, "Where Value:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea whereValue = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //
+  //   y = y + yOffset + 20;
+  //   addLabel(type, "And Column:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea AndColumn = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //   y = y + yOffset;
+  //   JComboBox AndType = matchTypeComboBox(type, TEXT_SMALL, boxX, y, 60, boxHight, contentPanel);
+  //   y = y + yOffset;
+  //   addLabel(type, "And Value:", TEXT_NORMAL, l2TitleX, y, 100, h, contentPanel);
+  //   JTextArea AndValue = addJTextArea(type, null, TEXT_SMALL, textX, y, 200, h, contentPanel);
+  //
+  // }
 
   public static void main(String[] args) {
     createAndShowGUI();
