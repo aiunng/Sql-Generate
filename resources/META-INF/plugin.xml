@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.aiunng.prj.idea.plugin.sql.generate</id>
   <name>SQL-Generate</name>
-  <version>2021.07.16.1</version>
+  <version>2021.10.22</version>
   <vendor email="17701306521@163.com" url="https://www.yuque.com/aiunng/elrg1e/rk1kp4">w*Yu</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,7 @@
       <p><font size="5">How to use:</font></p>
       <ul>
         <li>Menu bar:tools -> SQL Generate</li>
+        <li>Tool bar:SQL Generate icon</li>
         <li>Shortcuts:[win]ctrl + shift + S , [mac]command + shift + S</li>
       </ul>
       <p><font size="5">Create Table:</font></p>
@@ -28,6 +29,7 @@
       <p><font size="5">如何使用:</font></p>
       <ul>
         <li>菜单栏:tools -> SQL Generate</li>
+        <li>工具栏:点击'SQL Generate'图标</li>
         <li>快捷键:[win]ctrl + shift + S , [mac]command + shift + S</li>
       </ul>
       <p><font size="5">创建表:</font></p>
@@ -48,6 +50,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      <p><font size="5">1.0.2</font></p>
+        <ul>
+          <li>[NEW]tool bar Shortcut</li>
+        </ul>
       <p><font size="5">1.0.1</font></p>
         <ul>
           <li>[NEW]Create Table</li>
@@ -73,6 +79,12 @@
     <action id="sql-generate.start" class="com.aiunng.prj.StartTask" text="SQL Generate" description="sql语句生成">
       <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift S"/>
       <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+    <action id="sql-generate.toolbar.start"
+      class="com.aiunng.prj.StartTask"
+      text="SQL Generate"
+      description="SQL Generate" icon="/file/sql16.png">
+      <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="Stop"/>
     </action>
   </actions>
 

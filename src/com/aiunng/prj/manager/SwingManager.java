@@ -9,11 +9,17 @@ import static com.aiunng.prj.util.Constant.ADVER;
 import static com.aiunng.prj.util.Constant.AUTHOR;
 import static com.aiunng.prj.util.Constant.BLOG_LINK;
 import static com.aiunng.prj.util.Constant.BLOG_TEXT;
+import static com.aiunng.prj.util.Constant.DATE_CONVERT_LINK;
 import static com.aiunng.prj.util.Constant.ICON_URL;
 import static com.aiunng.prj.util.Constant.LEVE_3;
+import static com.aiunng.prj.util.Constant.SPLIT;
+import static com.aiunng.prj.util.Constant.STRING_CONVERT_LINK;
 import static com.aiunng.prj.util.Constant.TEXT_BOLD;
 import static com.aiunng.prj.util.Constant.TEXT_NORMAL;
 import static com.aiunng.prj.util.Constant.TEXT_SMALL;
+import static com.aiunng.prj.util.Constant.TOMO;
+import static com.aiunng.prj.util.Constant.TOMO_TEXT_DATE_CONVERT;
+import static com.aiunng.prj.util.Constant.TOMO_TEXT_STRING_CONVERT;
 import static com.aiunng.prj.util.Constant.VERSION;
 import static com.aiunng.prj.util.GenerateSqlUtil.createTable;
 import static com.aiunng.prj.util.GenerateSqlUtil.updateTableAddFile;
@@ -558,7 +564,7 @@ public class SwingManager {
     cfgButton.addActionListener(e -> {
       JDialog jDialog = new JDialog();
       jDialog.setTitle("help");
-      jDialog.setBounds(610, 310, 220, 180);
+      jDialog.setBounds(610, 310, 220, 250);
       jDialog.setVisible(true);
       jDialog.setLayout(null);
       // 禁止用户调整窗口大小
@@ -613,11 +619,66 @@ public class SwingManager {
       authorLabel.setBounds(70, y1, 100, 25);
       authorLabel.setFont(TEXT_BOLD);
 
+
+      y1 = y1 + offset1 + 10;
+      JLabel splitLabel = new JLabel(SPLIT);
+      splitLabel.setBounds(0, y1, 300, 5);
+      splitLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + 10;
+      JLabel tomoLabel = new JLabel(TOMO);
+      tomoLabel.setBounds(10, y1, 100, 25);
+      tomoLabel.setFont(TEXT_BOLD);
+
+      y1 = y1 + offset1;
+      JLabel stringConvertLink = new JLabel(TOMO_TEXT_STRING_CONVERT);
+      // 光标类型
+      stringConvertLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      stringConvertLink.setBounds(20, y1, 80, 25);
+      stringConvertLink.setFont(TEXT_BOLD);
+
+      // 鼠标监听
+      stringConvertLink.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+          try {
+            //打开网址
+            Desktop.getDesktop().browse(new URI(STRING_CONVERT_LINK));
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
+      });
+
+      JLabel dateConvertLink = new JLabel(TOMO_TEXT_DATE_CONVERT);
+      // 光标类型
+      dateConvertLink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+      dateConvertLink.setBounds(110, y1, 80, 25);
+      dateConvertLink.setFont(TEXT_BOLD);
+
+      // 鼠标监听
+      dateConvertLink.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+          try {
+            //打开网址
+            Desktop.getDesktop().browse(new URI(DATE_CONVERT_LINK));
+          } catch (Exception ex) {
+            ex.printStackTrace();
+          }
+        }
+      });
+
+
       contentPane.add(imgLabel);
       contentPane.add(versionLabel);
       contentPane.add(textLabel);
       contentPane.add(linklabel);
       contentPane.add(authorLabel);
+      contentPane.add(splitLabel);
+      contentPane.add(tomoLabel);
+      contentPane.add(stringConvertLink);
+      contentPane.add(dateConvertLink);
     });
   }
 
